@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "lib": ["es6", "dom"],
+    "types": ["cypress", "node"],
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "isolatedModules": false,
+    "strict": true,
+    "rootDir": "../" 
+  },
+  "include": [
+    "**/*.ts",
+    "/fixtures/*.ts"
+  ]
+}

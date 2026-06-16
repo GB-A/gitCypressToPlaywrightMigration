@@ -11,5 +11,5 @@
     "outDir": "dist",
     "resolveJsonModule": true
   },
-  "include": ["tests/**/*.ts", "src/**/*.ts", "**/*.ts"]
+  "include": ["playwright/tests/**/*.ts", "src/**/*.ts", "**/*.ts"]
 }
