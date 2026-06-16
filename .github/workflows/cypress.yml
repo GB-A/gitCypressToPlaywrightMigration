@@ -6,7 +6,30 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-      # Install dependencies with caching
-      # and run all Cypress tests
+      
       - name: Cypress run
         uses: cypress-io/github-action@v7
+        with:
+          browser: chrome
+          # Run in UI mode for better visibility
+          headed: true
+          # Take screenshots on failure and always
+          spec: cypress/e2e/**/*.cy.ts
+      
+      # Upload screenshots as artifacts
+      - name: Upload screenshots on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots/
+          retention-days: 7
+      
+      # Upload videos as artifacts (optional)
+      - name: Upload videos
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-videos
+          path: cypress/videos/
+          retention-days: 7
