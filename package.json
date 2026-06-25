@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-  "cy:open": "cypress open",
-  "cy:run": "cypress run"
-},
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "lint": "eslint . --ext .ts --report-unused-disable-directives --max-warnings=0",
+    "lint:fix": "eslint . --ext .ts --fix"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -14,7 +16,13 @@
   "devDependencies": {
     "@playwright/test": "^1.61.0",
     "@types/node": "^25.9.3",
+    "@typescript-eslint/eslint-plugin": "^8.61.1",
+    "@typescript-eslint/parser": "^8.61.1",
     "cypress": "^15.17.0",
+    "eslint": "^10.5.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-playwright": "^2.10.4",
+    "prettier": "^3.8.4",
     "typescript": "^6.0.3"
   }
 }

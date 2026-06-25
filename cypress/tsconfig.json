@@ -14,5 +14,5 @@
   "include": [
     "**/*.ts",
     "/fixtures/*.ts"
-  ]
+, "../playwright/pages/PatientPage.ts"  ]
 }

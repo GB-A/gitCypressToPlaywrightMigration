@@ -38,19 +38,51 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
+    // Setup project — runs once to authenticate and save session
+    {
+      name: 'setup',
+      testMatch: 'playwright/tests/auth.setup.ts',
+    },
+
+    // Auth tests — test the login page itself, no storage state needed
+    {
+      name: 'auth',
+      use: { ...devices['Desktop Chrome'] },
+      testMatch: 'playwright/tests/auth/**/*.spec.ts',
+      // Note: No storageState — auth tests need fresh login page
+      // Note: No dependencies — auth tests are independent
+    },
+
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: { 
+        ...devices['Desktop Chrome'],
+        // Load authenticated session for this project
+        storageState: 'playwright/.auth/user.json',
+      },
+      testMatch: 'playwright/tests/!(auth)/**/*.spec.ts',
+      // Depend on setup project — setup runs first
+      dependencies: ['setup'],
     },
 
     {
       name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
+      use: { 
+        ...devices['Desktop Firefox'],
+        storageState: 'playwright/.auth/user.json',
+      },
+      testMatch: 'playwright/tests/!(auth)/**/*.spec.ts',
+      dependencies: ['setup'],
     },
 
     {
       name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
+      use: { 
+        ...devices['Desktop Safari'],
+        storageState: 'playwright/.auth/user.json',
+      },
+      testMatch: 'playwright/tests/!(auth)/**/*.spec.ts',
+      dependencies: ['setup'],
     },
 
     /* Test against mobile viewports. */

@@ -108,11 +108,13 @@ export class LoginPage {
    * @returns {Promise<void>}
    */
   async loginWithInvalidCredentials(username: string, password: string): Promise<void> {
+    /* eslint-disable playwright/no-raw-locators -- selector required: location items have no accessible attributes */
     await this.usernameInput.fill(username)
     await this.passwordInput.fill(password)
     // Select location so the login attempt actually fires
     await this.page.locator('#sessionLocation li').first().click()
     await this.loginButton.click()
+    /* eslint-enable playwright/no-raw-locators */
   }
 
   /**
@@ -152,7 +154,9 @@ export class LoginPage {
    * @returns {Promise<void>}
    */
   async assertLoggedIn(): Promise<void> {
+    /* eslint-disable playwright/no-raw-locators -- selector required: legacy content header lacks accessible role */
     await expect(this.page).toHaveURL(/home/)
     await expect(this.page.locator('#content h4')).toContainText('admin')
+    /* eslint-enable playwright/no-raw-locators */
   }
 }
