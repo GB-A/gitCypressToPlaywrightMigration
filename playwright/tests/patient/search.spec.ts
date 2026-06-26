@@ -13,7 +13,7 @@ test.describe('Patient Search', () => {
 
   test('should find an existing patient by name', async ({ page }) => {
     const patientPage = new PatientPage(page)
-    await patientPage.searchPatient('John', 33)
+    await patientPage.searchPatient('John', 27)
   })
 
   test('should show no results for unknown patient', async ({ page }) => {
@@ -23,7 +23,7 @@ test.describe('Patient Search', () => {
 
   test('should navigate to patient dashboard on result click', async ({ page }) => {
     const patientPage = new PatientPage(page)
-    await patientPage.searchPatient('Maria', 8)
+    await patientPage.searchPatient('Maria', 2)
     await patientPage.clickFirstResult()
     await patientPage.assertOnPatientDashboard()
   })
