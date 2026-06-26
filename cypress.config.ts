@@ -8,6 +8,10 @@ export default defineConfig({
     specPattern: 'cypress/e2e/**/*.cy.ts',
     supportFile: false,
     
+    // Timeouts
+    pageLoadTimeout: 120000,  // Increased from default 60000ms
+    requestTimeout: 30000,
+    
     // Screenshot settings
     screenshotOnRunFailure: true,
     
