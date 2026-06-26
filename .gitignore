@@ -11,3 +11,4 @@ ESLINT_SETUP_TUTORIAL.md
 /cypress/.DS_Store
 /playwright/tests/auth/.DS_Store
 playwright/tests/apiTests/
+.DS_Store
