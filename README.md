@@ -1,5 +1,16 @@
 # 🎭 Playwright 🔷 TypeScript ⚡ E2E Automation 🏥 OpenMRS
 
+# 🎭 From Cypress to Playwright: A Real-World Automation Story 🎭 
+Our original Cypress suite executed tests within a sandboxed <iframe>, where it ran into a hard security blocker on the OpenMRS platform.
+
+While the login page loads securely over HTTPS, the legacy HTML <form> action targets an unencrypted HTTP URL, triggering a browser-enforced Mixed Content Block.
+
+To bypass this in Cypress, we were forced to artificially lower browser security flags (--allow-running-insecure-content), masking a critical flaw that leaves the site completely broken for real-world users.
+
+Migrating to Playwright eliminated the restrictive iframe sandbox entirely, allowing us to control the browser engines externally via native, low-level debugging protocols.
+
+Playwright’s out-of-process architecture hooks directly into the frame lifecycle, safely executing the authentication matrix and validating genuine user behavior without compromising testing security.
+
 ## OpenMRS Playwright E2E Automation Framework
 
 A production-ready, highly modularized end-to-end testing framework built with Playwright and TypeScript for the OpenMRS Medical Record System. Eliminates flaky workflows through synchronous, state-driven conditions, decoupled configuration, and an isolated multi-layered execution matrix.
