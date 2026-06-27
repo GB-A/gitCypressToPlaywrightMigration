@@ -1,6 +1,6 @@
 # 🎭 Playwright 🔷 TypeScript ⚡ E2E Automation 🏥 OpenMRS
 
-# 🎭 From Cypress to Playwright: A Real-World Automation Story 🎭 
+## 🎭 From Cypress to Playwright: A Real-World Automation Story 🎭 
 Our original Cypress suite executed tests within a sandboxed <iframe>, where it ran into a hard security blocker on the OpenMRS platform.
 
 While the login page loads securely over HTTPS, the legacy HTML <form> action targets an unencrypted HTTP URL, triggering a browser-enforced Mixed Content Block.
